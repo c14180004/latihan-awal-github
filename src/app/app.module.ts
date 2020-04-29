@@ -10,6 +10,7 @@ import {Routes, RouterModule} from '@angular/router';
 const ROUTES:Routes = [
   {path:'input', component : InputComponent},
   {path:'hasil', component : HasilComponent},
+  {path:'hasil/:has', component : HasilComponent},
 ]
 @NgModule({
   imports:      [ BrowserModule, FormsModule,RouterModule.forRoot(ROUTES)],

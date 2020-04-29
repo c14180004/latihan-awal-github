@@ -7,11 +7,12 @@ import {Router} from '@angular/router';
 })
 export class InputComponent implements OnInit {
   hasilnya = "";
-  cek = false;
+  has;
+  cek = true;
   a1 = "";
   a2 = "";
-  op;
-  constructor() { }
+  op= "+";
+  constructor(private router :Router) { }
 
   ngOnInit() {
 
@@ -26,16 +27,33 @@ export class InputComponent implements OnInit {
     this.hasilnya = this.hasilnya + x;
   }
   tambah(){
-
+    this.cek = false;
+    this.op = "+";
+    this.hasilnya = this.hasilnya + " + ";
   }
   kurang(){
-
+    this.cek = false;
+    this.op = "-";
+    this.hasilnya = this.hasilnya + " - ";
   }
   kali(){
-
+    this.cek = false;
+    this.op = "*";
+    this.hasilnya = this.hasilnya + " * ";
   }
   samadengan(){
-    
+    this.cek = true;
+    if(this.op == "+"){
+      this.has = parseInt(this.a1) + parseInt(this.a2);
+    }
+    else if(this.op == "-"){
+      this.has = parseInt(this.a1) - parseInt(this.a2);
+    }
+    else if(this.op == "*"){
+      this.has = parseInt(this.a1) * parseInt(this.a2);
+    }
+    this.hasilnya = ""//this.has.toString();""
+    this.router.navigate(['/hasil',this.has.toString()]);
   }
 
 }
